@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 
@@ -9,11 +10,26 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  user: Observable<firebase.User>;
+
+  private _isSignedIn: boolean;
+
 
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) { 
-    this.user = firebaseAuth.authState;
-  } 
+    this.firebaseAuth.authState.subscribe((user: firebase.User) => {
+      if (user) {
+        console.log("user is signed as", user);
+        this._isSignedIn = true;
+      } else {
+        console.log("user is not signed in");
+        this._isSignedIn = false;
+      }
+    })
+  }
+
+  get isSignedIn(): boolean {
+    return this._isSignedIn;
+  }
+   
 
   signup(email: string, password: string) {
     this.firebaseAuth
