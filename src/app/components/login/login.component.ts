@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import * as firebase from 'firebase/app';
-import { AngularFireAuth } from 'angularfire2/auth';
+
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +10,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  email: string;
+  password: string;
 
-  constructor(private fb: FormBuilder, public afAuth: AngularFireAuth) { 
+  constructor(private fb: FormBuilder, public authService: AuthService) { 
     this.buildForm();
   }
 
@@ -26,17 +28,11 @@ export class LoginComponent implements OnInit {
 
   }
 
-  submitLogin() {
+  login() {
     const email = this.form.get('email').value;
     const password = this.form.get('password').value;
-    
-    return new Promise<any>((resolve, reject) => {
-      firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(res => {
-        resolve(res);
-        console.log("Logado com Sucesso!")
-      }, err => reject(err))
-    });
-  }
 
+    this.authService.login(email, password);
+    this.email = this.password = '';
+  }
 }

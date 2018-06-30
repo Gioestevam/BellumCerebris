@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase/app';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AngularFireAuth } from 'angularfire2/auth';
+
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -11,8 +12,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class SignupComponent implements OnInit {
   form: FormGroup;
+  email: string;
+  password: string;
 
-  constructor(private fb: FormBuilder, public afAuth: AngularFireAuth) { 
+  constructor(private fb: FormBuilder, public authService: AuthService) { 
     this.buildForm();
   }
 
@@ -26,17 +29,13 @@ export class SignupComponent implements OnInit {
     })
   }
 
-  submitRegister() {
+
+  signup() {
     const email = this.form.get('email').value;
     const password = this.form.get('password').value;
-    
-    return new Promise<any>((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(res => {
-        resolve(res);
-        console.log("Cadastrado com Sucesso!")
-      }, err => reject(err))
-    });
+
+    this.authService.signup(email, password);
+    this.email = this.password = '';
   }
 
 }
