@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase/app';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../../services/auth.service';
@@ -13,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
 export class SignupComponent implements OnInit {
   form: FormGroup;
   email: string;
+  displayName: string;
   password: string;
 
   constructor(private fb: FormBuilder, public authService: AuthService) { 
@@ -20,22 +20,24 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   buildForm() {
     this.form = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      displayName: ['', Validators.required]
     })
   }
-
 
   signup() {
     const email = this.form.get('email').value;
     const password = this.form.get('password').value;
+    const displayName = this.form.get('displayName').value;
 
-    this.authService.signup(email, password);
-    this.email = this.password = '';
+    this.authService.signup(email, password, displayName);
+    this.email = this.password = this.displayName = '';
   }
 
 }

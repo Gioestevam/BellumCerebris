@@ -1,29 +1,38 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
-import { Observable } from 'rxjs';
-
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Observable,  } from 'rxjs';
 import { Router } from '@angular/router';
+
+interface User {
+  uid: string;
+  email?: string;
+  displayName?: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  user: Observable<User>;
+
+  _displayName: string;
+
   private _isSignedIn: boolean;
 
-
-  constructor(private firebaseAuth: AngularFireAuth, private router: Router) { 
+  constructor(private firebaseAuth: AngularFireAuth, private router: Router, private afs: AngularFirestore) { 
     this.firebaseAuth.authState.subscribe((user: firebase.User) => {
       if (user) {
-        console.log("user is signed as", user);
+        console.log("user is signed as", user.uid);
         this._isSignedIn = true;
+        return this.afs.doc<User>('users/${user.uid}').valueChanges();
       } else {
         console.log("user is not signed in");
         this._isSignedIn = false;
       }
-    })
+    });
   }
 
   get isSignedIn(): boolean {
@@ -31,12 +40,13 @@ export class AuthService {
   }
    
 
-  signup(email: string, password: string) {
+  signup(email: string, password: string, displayName: string) {
+    this._displayName = displayName;
     this.firebaseAuth
       .auth
       .createUserWithEmailAndPassword(email, password)
-      .then(value => {
-        console.log('Success!', value);
+      .then(credential => {
+        console.log('Success!', credential);
       })
       .catch(err =>  {
         console.log("Usuário Cadastrado", err.message);
@@ -47,13 +57,26 @@ export class AuthService {
     this.firebaseAuth
       .auth
       .signInWithEmailAndPassword(email, password)
-      .then(value => {
+      .then(credential => {
         this.router.navigate(['/home']);
-        console.log("Nice It's worked!");
+        this.updateUserData(credential.user);
+        console.log(credential.user)
       })
       .catch(err => {
-        console.log("Senha Incorreta", err.message);
+        console.log("Senha Incorreta", err.message , this._displayName);
       })
+  }
+
+  private updateUserData(user) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.collection("users").doc(user.uid);
+
+    const data: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: this._displayName
+    }
+
+    return userRef.set(data, {merge: true});
   }
 
   logout() {
