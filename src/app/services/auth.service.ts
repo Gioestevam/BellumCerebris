@@ -22,14 +22,14 @@ export class AuthService {
 
   private _isSignedIn: boolean;
 
-  constructor(private firebaseAuth: AngularFireAuth, private router: Router, private afs: AngularFirestore) { 
+  constructor(private firebaseAuth: AngularFireAuth, private router: Router, private afs: AngularFirestore) {
     this.firebaseAuth.authState.subscribe((user: firebase.User) => {
       if (user) {
-        console.log("user is signed as", user.uid);
+        console.log('user is signed as', user.uid);
         this._isSignedIn = true;
         return this.afs.doc<User>('users/${user.uid}').valueChanges();
       } else {
-        console.log("user is not signed in");
+        console.log('user is not signed in');
         this._isSignedIn = false;
       }
     });
@@ -65,27 +65,7 @@ export class AuthService {
     .signInWithEmailAndPassword(email, password)
     .then(credential => {
       this.router.navigate(['/home']);
-      this.updateUserData(credential.user);
     });
-  }
-
-  private updateUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.collection('users').doc(user.uid);
-
-    userRef
-    .snapshotChanges()
-    .subscribe(res => {
-      console.log(res.payload.data());
-
-      // const data: User = {
-      //   uid: user.uid,
-      //   email: user.email,
-      //   displayName: this._displayName
-      // };
-
-      // userRef.set(data);
-    });
-
   }
 
   logout() {
