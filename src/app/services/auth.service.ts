@@ -38,45 +38,54 @@ export class AuthService {
   get isSignedIn(): boolean {
     return this._isSignedIn;
   }
-   
 
   signup(email: string, password: string, displayName: string) {
-    this._displayName = displayName;
     this.firebaseAuth
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(credential => {
-        console.log('Success!', credential);
+        const userRef: AngularFirestoreDocument<any> = this.afs.collection('users').doc(credential.user.uid);
+
+        userRef.set({
+          name: displayName,
+          email: email
+        }).then(res => {
+          console.log('Success!', credential);
+          this.router.navigate(['/login']);
+        });
       })
       .catch(err =>  {
-        console.log("Usuário Cadastrado", err.message);
+        console.log('Usuário Cadastrado', err.message);
       });
   }
 
   login(email: string, password: string) {
     this.firebaseAuth
-      .auth
-      .signInWithEmailAndPassword(email, password)
-      .then(credential => {
-        this.router.navigate(['/home']);
-        this.updateUserData(credential.user);
-        console.log(credential.user)
-      })
-      .catch(err => {
-        console.log("Senha Incorreta", err.message , this._displayName);
-      })
+    .auth
+    .signInWithEmailAndPassword(email, password)
+    .then(credential => {
+      this.router.navigate(['/home']);
+      this.updateUserData(credential.user);
+    });
   }
 
   private updateUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.collection("users").doc(user.uid);
+    const userRef: AngularFirestoreDocument<any> = this.afs.collection('users').doc(user.uid);
 
-    const data: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: this._displayName
-    }
+    userRef
+    .snapshotChanges()
+    .subscribe(res => {
+      console.log(res.payload.data());
 
-    return userRef.set(data, {merge: true});
+      // const data: User = {
+      //   uid: user.uid,
+      //   email: user.email,
+      //   displayName: this._displayName
+      // };
+
+      // userRef.set(data);
+    });
+
   }
 
   logout() {
