@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
+import { MatGridListModule } from '@angular/material/grid-list';
 /* 
   * Firestore
 */
@@ -29,6 +29,7 @@ import { LoginComponent } from '../../components/login/login.component';
 import { SignupComponent } from '../../components/signup/signup.component';
 import { HomeComponent } from '../../components/home/home.component';
 import { AppRoutingModule } from '../../app-routing.module';
+import { TopicComponent } from '../../components/topic/topic.component';
 
 @NgModule({
   imports: [
@@ -43,12 +44,14 @@ import { AppRoutingModule } from '../../app-routing.module';
     MatInputModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatGridListModule
   ],
   declarations: [
     LoginComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    TopicComponent
   ],
   providers: [AuthService, AuthGuard]
 })

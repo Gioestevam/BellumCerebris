@@ -1,0 +1,37 @@
+<mat-grid-list cols="2" rowHeight="1:1">
+  <mat-grid-tile>
+    <mat-card class="card_topics">
+        <mat-card-header>
+          <div mat-card-avatar><mat-icon>list_alt</mat-icon></div>
+          <mat-card-title class="card_topics_title">
+            <span>Create Topics</span>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div>
+              <form>
+                <mat-form-field class="input_topics">
+                  <input matInput placeholder="Name" type="text" required>
+                </mat-form-field>
+                <div>
+                  <button mat-raised-button>Register topics</button>
+                </div>
+              </form>
+            </div>  
+        </mat-card-content>
+      </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <mat-card class="card_topics_registed">
+          <mat-card-header>
+            <div mat-card-avatar><mat-icon>list_alt</mat-icon></div>
+            <mat-card-title class="card_topics_title">
+              <span>Registered Topics</span>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <span>1 - Matematica</span>  
+          </mat-card-content>
+      </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
