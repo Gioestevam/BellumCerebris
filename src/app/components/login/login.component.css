@@ -1,0 +1,38 @@
+.cardLogin {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#ButtonText {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+#cardFooter {
+    width: 100%;
+    text-align: center;
+    line-height: 30px;
+}
+
+#loginText {
+    text-decoration: none;
+    color: #a9a8a8;
+    font-size: 20px;
+}
+
+.backgroundLogin {
+    width: 100vw;
+    height: 100vh;
+    background: url(src/assets/backgroundlogin.jpg) no-repeat center center;
+    background-size: cover; /*Css padrão*/
+    -webkit-background-size: cover; /*Css safari e chrome*/
+    -moz-background-size: cover; /*Css firefox*/
+    -ms-background-size: cover; /*Css IE não use mer#^@%#*/
+    -o-background-size: cover; /*Css Opera*/
+}
+
