@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AuthService } from '../../services/auth.service';
+//Authentication
+import { AuthService } from '../../modules/shared/services/firebase/auth.service';
 
 
-@Component({
+
+
+@Component({ 
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']

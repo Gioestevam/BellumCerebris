@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { AuthService } from '../../services/auth.service';
+//Authentication
+import { AuthService } from '../../modules/shared/services/firebase/auth.service';
+
+
 
 @Component({
   selector: 'app-login',
@@ -9,30 +12,28 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  form: FormGroup;
-  email: string;
-  password: string;
+  public disabled: boolean;
 
-  constructor(private fb: FormBuilder, public authService: AuthService) { 
-    this.buildForm();
-  }
+  public loginForm: FormGroup; 
 
-  buildForm() {
-    this.form = this.fb.group({
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: ['', Validators.required]
-    })
-  }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
+    this.disabled = false;
 
+    this.loginForm = new FormGroup({
+      email: new FormControl(null),
+      password: new FormControl(null)
+    });
   }
 
-  login() {
-    const email = this.form.get('email').value;
-    const password = this.form.get('password').value;
+  onLoginSubmit = () => {
+    this.disabled = true;
 
-    this.authService.login(email, password);
-    this.email = this.password = '';
+    let params = {
+      email: this.loginForm.get('email').value,
+      password: this.loginForm.get('password').value
+    }
   }
+
 }

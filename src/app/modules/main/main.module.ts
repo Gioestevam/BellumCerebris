@@ -12,24 +12,25 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
-/* 
-  * Firestore
-*/
+
+//FireStore
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
-/* 
-  * Services
-*/
-import { AuthService } from '../../services/auth.service';
-import { AuthGuard } from '../../services/auth.guard';
+// Services
+import { AuthGuard } from '../../modules/shared/guards/auth.guard';
+import { AuthService } from '../shared/services/firebase/auth.service';
 
-
+// Components
 import { LoginComponent } from '../../components/login/login.component';
 import { SignupComponent } from '../../components/signup/signup.component';
-import { HomeComponent } from '../../components/home/home.component';
+import { TopicComponent } from './components/topic/topic.component';
+import { HomeComponent } from './components/home/home.component';
+import { MainComponent } from './main.component';
+
+//Routings
 import { AppRoutingModule } from '../../app-routing.module';
-import { TopicComponent } from '../../components/topic/topic.component';
+import { MainRoutingModule } from './/main-routing.module';
 
 @NgModule({
   imports: [
@@ -45,13 +46,15 @@ import { TopicComponent } from '../../components/topic/topic.component';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AppRoutingModule,
-    MatGridListModule
+    MatGridListModule,
+    MainRoutingModule
   ],
   declarations: [
     LoginComponent,
     SignupComponent,
+    TopicComponent,
     HomeComponent,
-    TopicComponent
+    MainComponent
   ],
   providers: [AuthService, AuthGuard]
 })

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { AuthService } from '../services/auth.service';
+// Authentication
+import { AuthService } from '../services/firebase/auth.service';
 
 @Injectable({
   providedIn: 'root'
