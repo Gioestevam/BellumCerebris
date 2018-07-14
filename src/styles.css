@@ -29,3 +29,8 @@ body {
     margin-right: auto;
     width: 90%;
 }
+
+.toolbar-dashboard {
+    background-color: #ff8523;
+    color: #ffffff;
+}
