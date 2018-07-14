@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 //FireStore
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -27,6 +28,7 @@ import { TopicComponent } from './components/topic/topic.component';
 import { HomeComponent } from './components/home/home.component';
 import { MainComponent } from './main.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 
 //Routings
 import { MainRoutingModule } from './main-routing.module';
@@ -45,8 +47,8 @@ import { MainRoutingModule } from './main-routing.module';
     AngularFirestoreModule,
     MatGridListModule,
     MainRoutingModule,
-    MatMenuModule
-
+    MatMenuModule,
+    MatSidenavModule
   ],
   declarations: [
     SignupComponent,

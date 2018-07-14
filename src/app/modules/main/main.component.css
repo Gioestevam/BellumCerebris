@@ -1,0 +1,136 @@
+/* #img-profile {
+    background-color: #cecece;
+    border-radius: 50%;
+    width: 41px;
+    height: 41px;
+    float: left;
+
+}
+
+#name-profile {
+    margin-top: 5px;
+    margin-left: 5px;
+    float: right;
+}
+
+#icon_dashboard {
+    margin-top: 5px;
+}
+
+#grid_content {
+    width: 900px !important;
+    background-color: red;
+    float: left !important;
+}
+
+#grid_menuSideBar {
+    width: 500px !important;
+    float: right !important;
+    margin-left: 250px;
+}
+
+.cardCustomTitle {
+    background-color: #ff8523;
+    color: #ffffff
+} */
+
+#game {
+    background-color: red;
+    padding: 5px;
+    margin: 5px;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#nav {
+    background-color: red;
+    padding: 5px;
+    margin: 5px;
+    width: 200px;
+    flex-grow: 2;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#nav a:first-child {
+    margin-left: 20px;
+}
+
+#nav a:last-child {
+    margin-right: 20px;
+}
+
+#profile {
+    background-color: red;
+    padding: 5px;
+    margin: 5px;
+    width: 200px;
+}
+
+#icon-sidebar {
+    display: none;
+}
+
+#titleMobile {
+    display: none;
+}
+
+@media (max-width: 935px) {
+    .container {
+        width: 100%;
+    }
+
+    #icon-sidebar {
+        display: flex;
+        margin-right: 10px;
+        background-color: green;
+    }
+    #titleMobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 3;
+        background-color: blue;
+    }
+    #game, #nav, #profile {
+        display: none;
+    }
+}
+
+@media (max-width: 1100px) {
+    #nav span {
+        display: none;
+    }
+    #game span {
+        display: none;
+    }
+}
+
+.contentflex {
+    background-color: #ccc;
+    height: 700px;
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#gridContent {
+    background-color: red;
+    padding: 5px;
+    margin: 5px;
+    width: 400px;
+    flex-grow: 3;
+}
+
+#gridSideBar {
+    background-color: red;
+    padding: 5px;
+    margin: 5px;
+    width: 400px;
+}
