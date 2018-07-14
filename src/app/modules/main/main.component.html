@@ -1,3 +1,28 @@
-<p>
-  main works!
-</p>
+<mat-toolbar color="primary" class="toolbar-dashboard">
+  <mat-toolbar-row>
+    <div class="container">
+      <mat-grid-list cols="3" rowHeight="1:1">
+        <mat-grid-tile>
+          <mat-menu #appMenu="matMenu">
+            <button mat-menu-item>Modo História</button>
+            <button mat-menu-item>Modo teste</button>
+            <button mat-menu-item>Modo PVP</button>
+          </mat-menu>
+          <button mat-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>gamepad</mat-icon>
+            Iniciar Partida
+            <mat-icon>arrow_drop_down</mat-icon>
+          </button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <a mat-button routerLink="#"><mat-icon>stars</mat-icon>Medalhas</a>
+          <a mat-button routerLink="#"><mat-icon>stars</mat-icon>Campeonatos</a>
+          <a mat-button routerLink="#"><mat-icon>stars</mat-icon>Historicos</a>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <span>teste2</span>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 /* 
   * Material Design
@@ -12,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
 
 //FireStore
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -22,19 +22,17 @@ import { AuthGuard } from '../../modules/shared/guards/auth.guard';
 import { AuthService } from '../shared/services/firebase/auth.service';
 
 // Components
-import { LoginComponent } from '../../components/login/login.component';
 import { SignupComponent } from '../../components/signup/signup.component';
 import { TopicComponent } from './components/topic/topic.component';
 import { HomeComponent } from './components/home/home.component';
 import { MainComponent } from './main.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 //Routings
-import { AppRoutingModule } from '../../app-routing.module';
-import { MainRoutingModule } from './/main-routing.module';
+import { MainRoutingModule } from './main-routing.module';
 
 @NgModule({
   imports: [
-    CommonModule,
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -45,16 +43,17 @@ import { MainRoutingModule } from './/main-routing.module';
     MatInputModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AppRoutingModule,
     MatGridListModule,
-    MainRoutingModule
+    MainRoutingModule,
+    MatMenuModule
+
   ],
   declarations: [
-    LoginComponent,
     SignupComponent,
     TopicComponent,
     HomeComponent,
-    MainComponent
+    MainComponent,
+    DashboardComponent
   ],
   providers: [AuthService, AuthGuard]
 })
