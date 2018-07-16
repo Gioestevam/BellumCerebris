@@ -1,0 +1,53 @@
+<mat-toolbar class="toolbar-dashboard">
+  <mat-toolbar-row>
+    <div class="container">
+      <div id="icon-sidebar">
+          <button mat-icon-button>
+              <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+          </button>
+      </div>
+      <div id="titleMobile">
+        <h1>BellumCerebris</h1>
+      </div>
+      <div id="game">
+        <mat-menu #appMenu="matMenu">
+          <button mat-menu-item>Modo História</button>            
+          <button mat-menu-item>Modo PvP Aleatório</button>
+          <button mat-menu-item>Modo Competitivo</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="appMenu">
+          <mat-icon>gamepad</mat-icon>
+          <span>Iniciar Partida</span>
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+      </div>
+      <div id="nav">
+        <a mat-button routerLink="#"><mat-icon>stars</mat-icon><span>Medalhas</span></a>
+        <a mat-button routerLink="#"><mat-icon>bar_chart</mat-icon><span>Campeonatos</span></a>
+        <a mat-button routerLink="#"><mat-icon>assignment</mat-icon><span>Historicos</span></a>
+      </div>
+      <div id="profile">
+        <div id="img-profile">
+        </div>
+        <div id="name-profile">
+          <span>Giovanni</span>
+        </div>
+        <div id="icon-profile">
+        <mat-menu #menuProfile="matMenu">
+            <button mat-menu-item>Painel de Controle</button>
+            <button mat-menu-item>Configurações</button>            
+            <button mat-menu-item>Sair</button>
+          </mat-menu>
+          <button mat-icon-button [matMenuTriggerFor]="menuProfile">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div id="icon-logout">
+        <button mat-icon-button>
+          <mat-icon>power_settings_new</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

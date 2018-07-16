@@ -1,1 +1,36 @@
-
+<div id="InitialGame">
+    <mat-menu #appMenu="matMenu">
+        <button mat-menu-item>Modo História</button>            
+        <button mat-menu-item>Modo PvP Aleatório</button>
+        <button mat-menu-item>Modo Competitivo</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="appMenu">
+        <mat-icon>gamepad</mat-icon>
+        <span>Iniciar Partida</span>
+        <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+</div>
+<div class="contentflex">
+    <div id="gridContent">
+        Conteúdo em desenvolvimento
+    </div>
+    <div id="gridSideBar">
+        <div id="gridSideBarTitle">
+        <span>Ranking</span>
+        </div>
+        <div id="gridSideBarContent">
+        <!-- <mat-divider> -->
+        <div id="profileRanking">
+            <span>1ª</span>
+            <div id="img-Profile-Ranking"></div>
+            <div id="title-ranking">
+            <span>Giovanni</span>
+            </div>
+            <div>
+            <span>10.000 pontos</span>
+            </div>
+        </div>
+        <!-- </mat-divider> -->
+        </div>
+    </div>
+</div> 

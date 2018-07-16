@@ -1,6 +1,19 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="move">
-asdas
+  <mat-sidenav #sidenav mode="push">
+    <div id="profile-Sidebar">
+      <div id="img-profile"></div>
+      <div id="name-profile">
+        <span>Giovanni</span>
+      </div>
+    </div>
+    <div id="menuSidebarGame">
+      <a mat-button routerLink="controlpanel"><mat-icon>dashboard</mat-icon>Painel de Controle</a>
+      <a mat-button routerLink="#"><mat-icon>settings</mat-icon>Configurações</a>
+      <br>
+      <a mat-button routerLink="#"><mat-icon>stars</mat-icon>Medalhas</a>
+      <a mat-button routerLink="#"><mat-icon>bar_chart</mat-icon>Campeonato</a>
+      <a mat-button routerLink="#"><mat-icon>assignment</mat-icon>Históricos</a>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="toolbar-dashboard">
@@ -27,24 +40,37 @@ asdas
             </button>
           </div>
           <div id="nav">
+            <a mat-button routerLink="dashboard"><mat-icon>stars</mat-icon><span>Inicio</span></a>
             <a mat-button routerLink="#"><mat-icon>stars</mat-icon><span>Medalhas</span></a>
             <a mat-button routerLink="#"><mat-icon>bar_chart</mat-icon><span>Campeonatos</span></a>
             <a mat-button routerLink="#"><mat-icon>assignment</mat-icon><span>Historicos</span></a>
           </div>
           <div id="profile">
-            testests
+            <div id="img-profile">
+            </div>
+            <div id="name-profile">
+              <span>Giovanni</span>
+            </div>
+            <div id="icon-profile">
+            <mat-menu #menuProfile="matMenu">
+                <button mat-menu-item routerLink="controlpanel">Painel de Controle</button>
+                <button mat-menu-item>Configurações</button>            
+                <button mat-menu-item>Sair</button>
+              </mat-menu>
+              <button mat-icon-button [matMenuTriggerFor]="menuProfile">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div id="icon-logout">
+            <button mat-icon-button>
+              <mat-icon>power_settings_new</mat-icon>
+            </button>
           </div>
         </div>
       </mat-toolbar-row>
     </mat-toolbar>
-    <div class="contentflex">
-      <div id="gridContent">
-
-      </div>
-      <div id="gridSideBar">
-
-      </div>
-    </div> 
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

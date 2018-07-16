@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 /* 
   * Material Design
@@ -13,6 +14,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 //FireStore
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -32,6 +35,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 //Routings
 import { MainRoutingModule } from './main-routing.module';
+import { ControlpanelComponent } from './components/controlpanel/controlpanel.component';
+import { MenuToolbarComponent } from './components/menu-toolbar/menu-toolbar.component';
 
 @NgModule({
   imports: [
@@ -48,14 +53,19 @@ import { MainRoutingModule } from './main-routing.module';
     MatGridListModule,
     MainRoutingModule,
     MatMenuModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDividerModule,
+    MatProgressSpinnerModule,
+    CommonModule
   ],
   declarations: [
     SignupComponent,
     TopicComponent,
     HomeComponent,
     MainComponent,
-    DashboardComponent
+    DashboardComponent,
+    ControlpanelComponent,
+    MenuToolbarComponent
   ],
   providers: [AuthService, AuthGuard]
 })

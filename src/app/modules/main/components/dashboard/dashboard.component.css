@@ -1,0 +1,83 @@
+.contentflex {
+    height: 700px;
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#gridContent {
+    background-color: #cecece;
+    margin-top: 5px;
+    margin-right: 5px;
+    width: 400px;
+    flex-grow: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#gridSideBar {
+    background-color: #cecece;
+    margin-top: 5px;
+    margin-right: 5px;
+    width: 400px;
+    box-shadow:  0 0 1px #000000;
+}
+
+#gridSideBarTitle {
+    background-color: #ff8523;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+#gridSideBarContent {
+    width: 100%;
+    height: auto;
+}
+
+#profileRanking {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 50px;
+    font-size: 18px !important;
+}
+
+#img-Profile-Ranking {
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 41px;
+    height: 41px;    
+}
+
+#InitialGame {
+    display: none;
+}
+
+@media (max-width: 935px) {
+    #InitialGame {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #InitialGame button{
+        font-size: 20px;
+        color: #ff8523;
+    }
+}
